@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 
 export function NavBarComp (props) {
   return (
-    <Navbar bg='secondary' variant='dark' >
+    <Navbar bg='secondary' variant='dark' expand="lg">
       <Navbar.Brand href='/' className='text-light'><h2>{props.applicationName}</h2></Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>

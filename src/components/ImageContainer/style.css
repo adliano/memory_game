@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    min-height: 75%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image {
+    background-size: cover;
+    background-position: 50%;
+    height: 200px;
+    width: 200px;
+}
