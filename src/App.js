@@ -33,9 +33,16 @@ class App extends Component {
    * This method is called after components where mount
    */
   componentDidMount () {
-    this.reloadGame()
-    console.log(window.location.href);
-    
+    this.reloadGame()    
+  }
+  /**
+   * OnCardClick()
+   */
+  OnCardClick = (event) => {
+    // TODO: Implement this method
+    console.log('='.repeat(50))
+    console.log(event.target)
+    console.log('='.repeat(50))
   }
   /**
    * renderCharacters()
@@ -45,9 +52,9 @@ class App extends Component {
    */
   renderCharacters = () => {
     let _characters = this.state.characters.map((character, index) => (
-      <Image src={character.image} key={index} id={index} />
+      <Image src={character.image} key={index} id={index} onClick={this.OnCardClick}/>
     ))
-
+    // Return Arrya with <Image/>
     return _characters
   }
   /**
