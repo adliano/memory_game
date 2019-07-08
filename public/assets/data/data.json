@@ -13,6 +13,6 @@
 },{
     "image":  "./assets/images/vader.png", "clicked": false
 },{
-    "image": "./images/chewbacca.png", "clicked": false
+    "image": "./assets/images/chewbacca.png", "clicked": false
 }
 ]

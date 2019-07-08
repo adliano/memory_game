@@ -19,7 +19,7 @@ export function NavBarComp (props) {
             {props.score || 0}
           </NavPill>
           <NavPill text='Top Score' bg='bg-primary'>
-            {props.Topscore || 0}
+            {props.topscore || 0}
           </NavPill>
         </Nav>
       </Navbar.Collapse>
