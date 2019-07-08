@@ -1,0 +1,18 @@
+[{
+    "image": "./assets/images/chewbacca.png", "clicked": false
+},{
+    "image": "./assets/images/han-solo.png", "clicked": false
+},{
+    "image": "./assets/images/leia.png", "clicked": false
+},{
+    "image": "./assets/images/luke.png", "clicked": false
+},{
+    "image": "./assets/images/poe.png", "clicked": false
+},{
+    "image": "./assets/images/trooper.png", "clicked": false
+},{
+    "image":  "./assets/images/vader.png", "clicked": false
+},{
+    "image": "./images/chewbacca.png", "clicked": false
+}
+]
