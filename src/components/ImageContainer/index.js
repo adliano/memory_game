@@ -12,7 +12,7 @@ export function ImageContainer (props) {
 
 export function Image (props) {
   return (
-    <Card style={{ width: '25%' }} className='m-3 p-2 bg-secondary'>
+    <Card style={{ width: '25%' }} className='m-3 p-2 bg-secondary' id={props.id}>
       <Card.Img variant='top' src={props.src} />
       {/* <Card.Img variant='top' character={require('../../images/poe.png')} /> */}
     </Card>

@@ -34,6 +34,8 @@ class App extends Component {
    */
   componentDidMount () {
     this.reloadGame()
+    console.log(window.location.href);
+    
   }
   /**
    * renderCharacters()
@@ -42,8 +44,8 @@ class App extends Component {
    * click an image
    */
   renderCharacters = () => {
-    let _characters = this.state.characters.map(character => (
-      <Image src={character.image} />
+    let _characters = this.state.characters.map((character, index) => (
+      <Image src={character.image} key={index} id={index} />
     ))
 
     return _characters
@@ -75,5 +77,7 @@ export default App
 Adding Assets Outside of the Module System
 https://facebook.github.io/create-react-app/docs/using-the-public-folder
 In this approach assets/images/ will be placed at public/ dir and
-we will use `process.env.PUBLIC_URL` to access it
+we can use fetch() to access it.
+also we can use `process.env.PUBLIC_URL`, `window.location` to access 
+images from assets/images/
 */
