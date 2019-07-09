@@ -39,10 +39,29 @@ class App extends Component {
    * OnCardClick()
    */
   OnCardClick = (event) => {
+    
     // TODO: Implement this method
-    console.log('='.repeat(50))
-    console.log(event.target)
-    console.log('='.repeat(50))
+    const elementClicked = event.target
+
+    console.log(elementClicked)
+    // Check 
+    if (!this.state.characters[elementClicked.id].clicked) {
+      this.setState({ characters: this.state.characters.map((element, index) => {
+        if(index == elementClicked.id) {
+          return {...element, clicked: true}
+        }
+        else return {...element}
+      })})
+
+      
+    }
+    
+    console.log(this.state.characters[elementClicked.id])
+
+    // if  card clicked == true reset score to 0 and reload game
+    // else updat score and render card randonly
+    // Also need to checl if top score was reached
+
   }
   /**
    * renderCharacters()
@@ -54,6 +73,11 @@ class App extends Component {
     let _characters = this.state.characters.map((character, index) => (
       <Image src={character.image} key={index} id={index} onClick={this.OnCardClick}/>
     ))
+
+    /// DEBUGGING \\\
+    // Used to show on console if state `clicked` was change to true
+    console.log(this.state.characters)
+    
     // Return Arrya with <Image/>
     return _characters
   }
@@ -87,4 +111,9 @@ In this approach assets/images/ will be placed at public/ dir and
 we can use fetch() to access it.
 also we can use `process.env.PUBLIC_URL`, `window.location` to access 
 images from assets/images/
+
+sample of character json
+{
+    "image": "./assets/images/chewbacca.png", "clicked": false
+}
 */
