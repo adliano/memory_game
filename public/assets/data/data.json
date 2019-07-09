@@ -12,7 +12,5 @@
     "image": "./assets/images/trooper.png", "clicked": false
 },{
     "image":  "./assets/images/vader.png", "clicked": false
-},{
-    "image": "./assets/images/chewbacca.png", "clicked": false
 }
 ]

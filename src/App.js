@@ -62,6 +62,7 @@ class App extends Component {
           // typeof elementClicked.id Output 'string'
           // Therefor i used parseInt() to void warning about using `==`
           if (index === parseInt(elementClicked.id)) {
+            // Using Sprad to give whatever its left from the object 
             return { ...element, clicked: true }
           } else return { ...element }
         })
@@ -96,11 +97,14 @@ class App extends Component {
         onClick={this.OnCardClick}
       />
     ))
-
     /// DEBUGGING \\\
     // Used to show on console if state `clicked` was change to true
-    console.log(this.state.characters)
+    // console.log(this.state.characters)
 
+    // Array.sort() will suffle the array to render cards randolly 
+    // The argument is a random number that may be positive or negative, 
+    // so will reorders elements randomly.
+    _characters.sort(() => Math.random() - 0.5)
     // Return Arrya with <Image/>
     return _characters
   }
