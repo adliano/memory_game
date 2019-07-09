@@ -14,7 +14,9 @@ class App extends Component {
    * State
    */
   state = {
-    characters: []
+    characters: [],
+    score: 0,
+    topscore: 0
   }
   /**
    * Reload Game Method
@@ -22,11 +24,11 @@ class App extends Component {
    */
   reloadGame = () => {
     fetch('assets/data/data.json')
-      .then(response => response.json())
-      .then(results => {
+      .then((response) => response.json())
+      .then((results) => {
         this.setState({ characters: results })
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err))
   }
   /**
    * componentDidMount
@@ -38,29 +40,46 @@ class App extends Component {
   /**
    * OnCardClick()
    */
+  // TODO: Implement this method
   OnCardClick = (event) => {
-    
-    // TODO: Implement this method
+    // Save the instance of the clicked element
     const elementClicked = event.target
-
+    //// DEBUGGING \\\\
     console.log(elementClicked)
     // Check 
-    if (!this.state.characters[elementClicked.id].clicked) {
+    // if  card clicked == true reset score to 0 and reload game
+    if (this.state.characters[elementClicked.id].clicked) {
+      console.log('game over');
+      // Reset score
+      this.setState({ score: 0})
+      // Reload Game
+      this.reloadGame()
+    }
+    else {
+      // Update character clicked to true 
       this.setState({ characters: this.state.characters.map((element, index) => {
-        if(index == elementClicked.id) {
+        // typeof index Output 'number' and 
+        // typeof elementClicked.id Output 'string'
+        // Therefor i used parseInt() to void warning about using `==`
+        if(index === parseInt(elementClicked.id)) {
           return {...element, clicked: true}
         }
         else return {...element}
       })})
-
+      // Update Score
+      this.setState({ score: (this.state.score + 1) })
+      // Check if topscore have been reach
+      if(this.state.score > this.state.topscore) {
+        this.setState({ topscore: this.state.score})
+      }
       
+      // TODO: re-render card randonly 
     }
     
     console.log(this.state.characters[elementClicked.id])
 
-    // if  card clicked == true reset score to 0 and reload game
-    // else updat score and render card randonly
-    // Also need to checl if top score was reached
+    // Also need to check if top score was reached
+    // TODO: Remove Debugging line inside renderCharacters() Method
 
   }
   /**
@@ -91,8 +110,8 @@ class App extends Component {
         <NavBarComp
           applicationName='Memory Game'
           text='change this later'
-          score='11'
-          topscore='99'
+          score={this.state.score}
+          topscore={this.state.topscore}
         />
         <HeaderComp />
         <ImageContainer>{this.renderCharacters()}</ImageContainer>
@@ -117,3 +136,17 @@ sample of character json
     "image": "./assets/images/chewbacca.png", "clicked": false
 }
 */
+
+ // if (!this.state.characters[elementClicked.id].clicked) {
+    //   this.setState({ characters: this.state.characters.map((element, index) => {
+    //     // console.log(typeof index)
+    //     // Output 'number' and 
+    //     // console.log(typeof elementClicked.id)
+    //     // Output 'string'
+    //     // Therefor i used parseInt() to void warning about using `==`
+    //     if(index === parseInt(elementClicked.id)) {
+    //       return {...element, clicked: true}
+    //     }
+    //     else return {...element}
+    //   })})
+    // }
