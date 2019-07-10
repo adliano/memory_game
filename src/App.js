@@ -9,6 +9,9 @@ import { NavBarComp } from './components/NavBarComp'
 import { ImageContainer, Image } from './components/ImageContainer'
 import HeaderComp from './components/HeaderComp'
 
+
+import _ from 'lodash'
+
 class App extends Component {
   /**
    * State
@@ -77,7 +80,6 @@ class App extends Component {
         // Update Score
         this.setState({ score: this.state.score + 1 })
       }
-      // TODO: re-render card randonly
     }
 
     console.log(this.state.characters[elementClicked.id])
@@ -101,12 +103,11 @@ class App extends Component {
     // Used to show on console if state `clicked` was change to true
     // console.log(this.state.characters)
 
-    // Array.sort() will suffle the array to render cards randolly 
-    // The argument is a random number that may be positive or negative, 
-    // so will reorders elements randomly.
-    _characters.sort(() => Math.random() - 0.5)
-    // Return Arrya with <Image/>
-    return _characters
+    
+    
+    // Better way its using Lowdash to
+    // Return shuffle Arrya with <Image/>
+    return _.shuffle(_characters)
   }
   /**
    * Render Page
@@ -158,3 +159,7 @@ sample of character json
 //     else return {...element}
 //   })})
 // }
+// Array.sort() will suffle the array to render cards randolly 
+    // The argument is a random number that may be positive or negative, 
+    // so will reorders elements randomly.
+    // _characters.sort(() => Math.random() - 0.5)

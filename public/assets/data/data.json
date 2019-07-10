@@ -12,5 +12,15 @@
     "image": "./assets/images/trooper.png", "clicked": false
 },{
     "image":  "./assets/images/vader.png", "clicked": false
+},{
+    "image":  "./assets/images/bb8.webp", "clicked": false
+},{
+    "image":  "./assets/images/boba.webp", "clicked": false
+},{
+    "image":  "./assets/images/obiwan.webp", "clicked": false
+},{
+    "image":  "./assets/images/rey.webp", "clicked": false
+},{
+    "image":  "./assets/images/yoda.wbp", "clicked": false
 }
 ]
