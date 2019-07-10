@@ -19,7 +19,8 @@ class App extends Component {
   state = {
     characters: [],
     score: 0,
-    topscore: 0
+    topscore: 0,
+    navbarMsg: 'Click an image to begin!'
   }
   /**
    * Reload Game Method
@@ -54,10 +55,12 @@ class App extends Component {
     if (this.state.characters[elementClicked.id].clicked) {
       console.log('game over')
       // Reset score
-      this.setState({ score: 0 })
+      this.setState({ score: 0, navbarMsg: 'You guessed incorrectly!' })
       // Reload Game
       this.reloadGame()
     } else {
+      console.log('Point to User')
+      this.setState({ navbarMsg: 'You guessed correctly!'})
       // Update character clicked to true
       this.setState({
         characters: this.state.characters.map((element, index) => {
@@ -118,7 +121,7 @@ class App extends Component {
       <>
         <NavBarComp
           applicationName='Memory Game'
-          text='change this later'
+          text={this.state.navbarMsg}
           score={this.state.score}
           topscore={this.state.topscore}
         />
