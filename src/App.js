@@ -2,13 +2,14 @@
 /**
  * Adriano Alves
  * Jul 6 2019
+ * https://clicky-game.netlify.com/
  */
 import React, { Component } from 'react'
 import './App.css'
-import { NavBarComp } from './components/NavBarComp'
+import { NavBarComp, NavPill, PillContainer } from './components/NavBarComp'
+// import Navbar from 'react-bootstrap/Navbar'
 import { ImageContainer, Image } from './components/ImageContainer'
 import HeaderComp from './components/HeaderComp'
-
 
 import _ from 'lodash'
 
@@ -43,8 +44,8 @@ class App extends Component {
   }
   /**
    * OnCardClick()
+   * This will handle the logic when user click on image card
    */
-  // TODO: Implement this method
   OnCardClick = event => {
     // Save the instance of the clicked element
     const elementClicked = event.target
@@ -60,7 +61,7 @@ class App extends Component {
       this.reloadGame()
     } else {
       console.log('Point to User')
-      this.setState({ navbarMsg: 'You guessed correctly!'})
+      this.setState({ navbarMsg: 'You guessed correctly!' })
       // Update character clicked to true
       this.setState({
         characters: this.state.characters.map((element, index) => {
@@ -68,7 +69,7 @@ class App extends Component {
           // typeof elementClicked.id Output 'string'
           // Therefor i used parseInt() to void warning about using `==`
           if (index === parseInt(elementClicked.id)) {
-            // Using Sprad to give whatever its left from the object 
+            // Using Sprad to give whatever its left from the object
             return { ...element, clicked: true }
           } else return { ...element }
         })
@@ -88,10 +89,20 @@ class App extends Component {
     console.log(this.state.characters[elementClicked.id])
   }
   /**
+   * renderScores()
+   * This method will render the score and top score
+   */
+  renderScores = ({score, topscore}) => {
+    return(
+      <PillContainer>
+        <NavPill text='Score' bg='bg-success'>{score}</NavPill>
+        <NavPill text='Top Score' bg='bg-primary'>{topscore}</NavPill>
+      </PillContainer>
+    )
+  }
+  /**
    * renderCharacters()
-   * This method will render images
-   * TODO: Create a logic to random images after user
-   * click an image
+   * This method will render images cards
    */
   renderCharacters = () => {
     let _characters = this.state.characters.map((character, index) => (
@@ -106,8 +117,6 @@ class App extends Component {
     // Used to show on console if state `clicked` was change to true
     // console.log(this.state.characters)
 
-    
-    
     // Better way its using Lowdash to
     // Return shuffle Arrya with <Image/>
     return _.shuffle(_characters)
@@ -120,13 +129,14 @@ class App extends Component {
       // Using React Fragment <> </>
       <>
         <NavBarComp
-          applicationName='Memory Game'
+          fixed='top'
+          brandName='Memory Game'
           text={this.state.navbarMsg}
-          score={this.state.score}
-          topscore={this.state.topscore}
+          pills={this.renderScores(this.state)}
         />
         <HeaderComp />
         <ImageContainer>{this.renderCharacters()}</ImageContainer>
+        <NavBarComp brandName='@Memory Game'/>
       </>
     )
   }
@@ -162,7 +172,7 @@ sample of character json
 //     else return {...element}
 //   })})
 // }
-// Array.sort() will suffle the array to render cards randolly 
-    // The argument is a random number that may be positive or negative, 
-    // so will reorders elements randomly.
-    // _characters.sort(() => Math.random() - 0.5)
+// Array.sort() will suffle the array to render cards randolly
+// The argument is a random number that may be positive or negative,
+// so will reorders elements randomly.
+// _characters.sort(() => Math.random() - 0.5)

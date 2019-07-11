@@ -5,23 +5,16 @@ import Nav from 'react-bootstrap/Nav'
 // Navbar component
 export function NavBarComp (props) {
   return (
-    <Navbar bg='secondary' variant='dark' expand='lg' fixed='top'>
+    <Navbar bg='secondary' variant='dark' expand='lg' fixed={props.fixed}>
       <Navbar.Brand href='/' className='text-light'>
-        <h2>{props.applicationName}</h2>
+        <h2>{props.brandName}</h2>
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
         <Navbar.Text className='mx-auto text-light'>
           <h2>{props.text}</h2>
         </Navbar.Text>
-        <Nav variant='pills'>
-          <NavPill text='Score' bg='bg-success'>
-            {props.score || 0}
-          </NavPill>
-          <NavPill text='Top Score' bg='bg-primary'>
-            {props.topscore || 0}
-          </NavPill>
-        </Nav>
+          {props.pills}
       </Navbar.Collapse>
     </Navbar>
   )
@@ -34,5 +27,13 @@ export function NavPill (props) {
         {props.text}: {props.children}
       </h3>
     </Nav.Item>
+  )
+}
+// Container to hold the pills that will be used to display the scores
+export function PillContainer (props) {
+  return(
+    <Nav variant='pills'>
+      {props.children}
+    </Nav>
   )
 }
