@@ -3,6 +3,7 @@
  * Adriano Alves
  * Jul 6 2019
  * https://clicky-game.netlify.com/
+ * https://github.com/gitname/react-gh-pages
  */
 import React, { Component } from 'react'
 import './App.css'
