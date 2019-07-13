@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/adliano/memory_game/static/css/main.919af2dd.chunk.css",
-    "main.js": "/adliano/memory_game/static/js/main.e084c8df.chunk.js",
-    "main.js.map": "/adliano/memory_game/static/js/main.e084c8df.chunk.js.map",
-    "runtime~main.js": "/adliano/memory_game/static/js/runtime~main.f58ca933.js",
-    "runtime~main.js.map": "/adliano/memory_game/static/js/runtime~main.f58ca933.js.map",
-    "static/js/2.7a517d72.chunk.js": "/adliano/memory_game/static/js/2.7a517d72.chunk.js",
-    "static/js/2.7a517d72.chunk.js.map": "/adliano/memory_game/static/js/2.7a517d72.chunk.js.map",
-    "index.html": "/adliano/memory_game/index.html",
-    "precache-manifest.476235f768f84ddf62886b0d62dacca4.js": "/adliano/memory_game/precache-manifest.476235f768f84ddf62886b0d62dacca4.js",
-    "service-worker.js": "/adliano/memory_game/service-worker.js",
-    "static/css/main.919af2dd.chunk.css.map": "/adliano/memory_game/static/css/main.919af2dd.chunk.css.map",
-    "static/media/style.css": "/adliano/memory_game/static/media/bg_image.b49328a2.png"
+    "main.css": "/memory_game/static/css/main.248d42ae.chunk.css",
+    "main.js": "/memory_game/static/js/main.d1a26484.chunk.js",
+    "main.js.map": "/memory_game/static/js/main.d1a26484.chunk.js.map",
+    "runtime~main.js": "/memory_game/static/js/runtime~main.aa57f519.js",
+    "runtime~main.js.map": "/memory_game/static/js/runtime~main.aa57f519.js.map",
+    "static/js/2.7a517d72.chunk.js": "/memory_game/static/js/2.7a517d72.chunk.js",
+    "static/js/2.7a517d72.chunk.js.map": "/memory_game/static/js/2.7a517d72.chunk.js.map",
+    "index.html": "/memory_game/index.html",
+    "precache-manifest.09172e3f84b683819710beda7ecbcc0d.js": "/memory_game/precache-manifest.09172e3f84b683819710beda7ecbcc0d.js",
+    "service-worker.js": "/memory_game/service-worker.js",
+    "static/css/main.248d42ae.chunk.css.map": "/memory_game/static/css/main.248d42ae.chunk.css.map",
+    "static/media/style.css": "/memory_game/static/media/bg_image.b49328a2.png"
   }
 }
