@@ -10,7 +10,7 @@ import { NavBarComp, NavPill, PillContainer } from './components/NavBarComp'
 // import Navbar from 'react-bootstrap/Navbar'
 import { ImageContainer, Image } from './components/ImageContainer'
 import HeaderComp from './components/HeaderComp'
-
+// Lowdash used to shuffle array
 import _ from 'lodash'
 
 class App extends Component {
@@ -26,12 +26,17 @@ class App extends Component {
   /**
    * Reload Game Method
    * This will reload game when it start and after game over
+   * Fetch used in case need to get data from some database in future
    */
   reloadGame = () => {
     fetch('assets/data/data.json')
       .then(response => response.json())
       .then(results => {
-        this.setState({ characters: results })
+        this.setState({ 
+          characters: results,
+          score: 0, 
+          navbarMsg: 'You guessed incorrectly!',
+        })
       })
       .catch(err => console.log(err))
   }
@@ -49,44 +54,33 @@ class App extends Component {
   OnCardClick = event => {
     // Save the instance of the clicked element
     const elementClicked = event.target
-    /// / DEBUGGING \\\\
-    console.log(elementClicked)
     // Check
-    // if  card clicked == true reset score to 0 and reload game
+    // if  card clicked === true reset score to 0 and reload game
     if (this.state.characters[elementClicked.id].clicked) {
-      console.log('game over')
-      // Reset score
-      this.setState({ score: 0, navbarMsg: 'You guessed incorrectly!' })
-      // Reload Game
+      // GameOver, Reload Game will reset score
       this.reloadGame()
     } else {
-      console.log('Point to User')
-      this.setState({ navbarMsg: 'You guessed correctly!' })
-      // Update character clicked to true
-      this.setState({
-        characters: this.state.characters.map((element, index) => {
-          // typeof index Output 'number' and
-          // typeof elementClicked.id Output 'string'
-          // Therefor i used parseInt() to void warning about using `==`
-          if (index === parseInt(elementClicked.id)) {
-            // Using Sprad to give whatever its left from the object
-            return { ...element, clicked: true }
-          } else return { ...element }
-        })
+      // User got a point
+      let updatedCharacters = this.state.characters.map((element, index) => {
+        // typeof index Output 'number' and
+        // typeof elementClicked.id Output 'string'
+        // Therefor i used parseInt() to void warning about using `==`
+        if (index === parseInt(elementClicked.id)) {
+          // Using Sprad to give whatever its left from the object
+          return { ...element, clicked: true }
+        } else return { ...element }
       })
-      // Check if topscore have been reach
-      if (this.state.score >= this.state.topscore) {
-        this.setState({
-          score: this.state.score + 1,
-          topscore: this.state.score + 1
-        })
-      } else {
-        // Update Score
-        this.setState({ score: this.state.score + 1 })
-      }
-    }
 
-    console.log(this.state.characters[elementClicked.id])
+      let updatedScore = this.state.score + 1;
+      let updatedTopScore = Math.max(updatedScore, this.state.topscore)
+
+      this.setState({
+        characters: updatedCharacters,
+        score: updatedScore,
+        topscore: updatedTopScore,
+        navbarMsg: 'You guessed correctly!'
+      })
+    }
   }
   /**
    * renderScores()
@@ -113,12 +107,9 @@ class App extends Component {
         onClick={this.OnCardClick}
       />
     ))
-    /// DEBUGGING \\\
-    // Used to show on console if state `clicked` was change to true
-    // console.log(this.state.characters)
 
-    // Better way its using Lowdash to
-    // Return shuffle Arrya with <Image/>
+    // Using Lowdash to Return shuffle Array with <Image/>
+    // https://github.com/lodash/lodash/blob/4ea8c2ec249be046a0f4ae32539d652194caf74f/shuffle.js
     return _.shuffle(_characters)
   }
   /**
@@ -159,20 +150,3 @@ sample of character json
 }
 */
 
-// if (!this.state.characters[elementClicked.id].clicked) {
-//   this.setState({ characters: this.state.characters.map((element, index) => {
-//     // console.log(typeof index)
-//     // Output 'number' and
-//     // console.log(typeof elementClicked.id)
-//     // Output 'string'
-//     // Therefor i used parseInt() to void warning about using `==`
-//     if(index === parseInt(elementClicked.id)) {
-//       return {...element, clicked: true}
-//     }
-//     else return {...element}
-//   })})
-// }
-// Array.sort() will suffle the array to render cards randolly
-// The argument is a random number that may be positive or negative,
-// so will reorders elements randomly.
-// _characters.sort(() => Math.random() - 0.5)
